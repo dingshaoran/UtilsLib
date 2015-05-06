@@ -1,9 +1,5 @@
 package view;
 
-/**
- * 两端对齐的textivew
- * from:http://www.23code.com/
- */
 import android.content.Context;
 import android.graphics.Canvas;
 import android.text.Layout;
@@ -14,7 +10,7 @@ import android.widget.TextView;
 
 public class AlignTextView extends TextView {
 
-	private int mLineY;
+	private float mLineY;
 	private int mViewWidth;
 
 	public AlignTextView(Context context, AttributeSet attrs) {
@@ -39,13 +35,14 @@ public class AlignTextView extends TextView {
 		mLineY = 0;
 		mLineY += getTextSize();
 		Layout layout = getLayout();
-		for (int i = 0; i < layout.getLineCount(); i++) {
+		int lineCount = layout.getLineCount();
+		for (int i = 0; i < lineCount; i++) {
 			int lineStart = layout.getLineStart(i);
 			int lineEnd = layout.getLineEnd(i);
 			String line = text.substring(lineStart, lineEnd);
 
 			float width = StaticLayout.getDesiredWidth(text, lineStart, lineEnd, getPaint());
-			if (needScale(line)) {
+			if (needScale(line) && i != lineCount - 1) {
 				drawScaledText(canvas, lineStart, line, width);
 			} else {
 				canvas.drawText(line, 0, mLineY, paint);
