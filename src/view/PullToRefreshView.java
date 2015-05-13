@@ -16,7 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.uxin.goodcar.R;
+import com.support_libs.R;
 
 @SuppressLint("ClickableViewAccessibility")
 public class PullToRefreshView extends LinearLayout {
@@ -482,7 +482,7 @@ public class PullToRefreshView extends LinearLayout {
 	public void onHeaderRefreshComplete() {
 		setHeaderTopMargin(RESET);
 		mHeaderImageView.setVisibility(View.VISIBLE);
-		mHeaderImageView.setImageResource(R.drawable.pulltorefresh_arrow_down);
+		mHeaderImageView.setImageResource(R.drawable.arrow_down);
 		mHeaderTextView.setText(R.string.pull_to_refresh_pull_label);
 		mHeaderProgressBar.setVisibility(View.GONE);
 		// mHeaderUpdateTextView.setText(mLastUpdateTime);
@@ -506,7 +506,7 @@ public class PullToRefreshView extends LinearLayout {
 	public void onFooterRefreshComplete() {
 		setHeaderTopMargin(RESET);
 		mFooterImageView.setVisibility(View.VISIBLE);
-		mFooterImageView.setImageResource(R.drawable.pulltorefresh_arrow_up);
+		mFooterImageView.setImageResource(R.drawable.arrow_up);
 		mFooterTextView.setText(R.string.pull_to_refresh_footer_pull_label);
 		mFooterProgressBar.setVisibility(View.GONE);
 		// mHeaderUpdateTextView.setText(mLastUpdateTime);
