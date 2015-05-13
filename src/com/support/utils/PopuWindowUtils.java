@@ -6,8 +6,11 @@ import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
@@ -315,7 +318,68 @@ public class PopuWindowUtils {
 		return popupWindow;
 	}
 
+	/**
+	 * 创建一个popuwindow里面是listview的如果anchor在屏幕的偏上的位置就把popu现在在下面，
+	 * 如果anchor在屏幕的下面就把popu显示在上面
+	 * 
+	 * @param context所在的activity
+	 * @param anchor要显示在哪个view上面或者下面
+	 * @param objects
+	 *            listview要显示的数据
+	 * @param listener点击的回调监听
+	 * @return
+	 */
+
+	public static PopupWindow showList(Activity context, View anchor, String[] objects, final OnItemClickListener listener) {
+
+		int[] location = new int[2];
+		anchor.getLocationInWindow(location);//获取view的绝对左边
+		Rect frame = new Rect();
+		context.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+		int statusBarHeight = frame.top;//状态栏的高度
+		int c = context.getResources().getDisplayMetrics().widthPixels / 100;//大概3.6dp留个边距
+		int childTop = location[1];
+		int parentHeight = context.getResources().getDisplayMetrics().heightPixels;//屏幕高度
+		boolean showUp = childTop > (parentHeight + anchor.getHeight()) / 2 ? true : false;//控制在view上面显示还是在下面
+		LinearLayout ll = new LinearLayout(context);
+		ListView listView = new ListView(context);
+		LayoutParams lp = new LayoutParams(-1, -2);//外面套一层view，控制listview如果内容多就滑动，内容少就包裹内容
+		lp.setMargins(0, c / 2, 0, c / 2);
+		ll.addView(listView, lp);
+		listView.setBackgroundColor(0xff666666);
+		listView.setHeaderDividersEnabled(true);
+		listView.setFooterDividersEnabled(true);
+		listView.setSelector(new ColorDrawable());
+		listView.setDivider(new ColorDrawable(Color.WHITE));
+		listView.setVerticalScrollBarEnabled(false);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				listener.onItemClick(parent, view, position, id);
+				popupWindow.dismiss();
+				popupWindow = null;
+			}
+		});
+		if (android.os.Build.VERSION.SDK_INT > 8) {
+			listView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+		} else {
+			listView.setFadingEdgeLength(0);
+		}
+		listView.setAdapter(new ArrayAdapter<String>(context, R.layout.item_textview, objects));
+		int width = anchor.getWidth();
+		if (showUp) {
+			ll.setGravity(Gravity.BOTTOM);//让listview和底部对齐
+			popupWindow = showAtLocation(ll, width + 2 * c, location[1] - statusBarHeight, Gravity.NO_GRAVITY, anchor.getLeft() - c, 0, -1);//上面显示
+		} else {
+			popupWindow = showAsDropDown(anchor, ll, width + c * 2, parentHeight - childTop - anchor.getHeight() - 2 * c, -c, 0, -1);//view下面显示
+		}
+		return popupWindow;
+	}
+
 	public interface ShowDropListMenuOnClick {
 		public void OnClick(List<View> view, List<Integer> rli);
 	}
+
+	private static PopupWindow popupWindow;
 }
