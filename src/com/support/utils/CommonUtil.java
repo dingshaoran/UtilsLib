@@ -1,15 +1,9 @@
 ﻿package com.support.utils;
 
-import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.UUID;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.text.ClipboardManager;
 import android.text.Layout;
 import android.text.TextUtils;
@@ -33,42 +27,6 @@ public class CommonUtil {
 
 	// private static final double PI = Math.PI;
 	private static final double EARTH_RADIUS = 6378137.0;
-
-	/**
-	 * 通过手机照相获取图片
-	 * 
-	 * @param activity
-	 * @return 照相后图片的路径
-	 */
-	public static String takePicture(Activity activity, String fileTarget) {
-		File dir = new File(fileTarget);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
-		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		String path = fileTarget + UUID.randomUUID().toString() + ".jpg";
-		File file = FileUtils.createNewFile(path);
-		if (file != null) {
-			intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-		}
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		activity.startActivityForResult(intent, 1);
-		return path;
-	}
-
-	/**
-	 * 安装apk
-	 * 
-	 * @param file_
-	 *            *.apk文件
-	 */
-	public static void installApk(File file, Context ctx) {
-		Intent intent = new Intent();
-		intent.setAction(Intent.ACTION_VIEW);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-		ctx.startActivity(intent);
-	}
 
 	/**
 	 * textview的maxline显示不全的展开时显示一个展开的动画

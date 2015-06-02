@@ -15,7 +15,7 @@
 
 package com.xutils.http.client.multipart.content;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.xutils.http.client.multipart.MIME;
 
 import java.io.IOException;
@@ -70,7 +70,7 @@ public class InputStreamBody extends AbstractContentBody {
             }
             out.flush();
         } finally {
-            CloseableUtils.close(this.in);
+            CloseUtils.close(this.in);
         }
     }
 

@@ -19,7 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.support.utils.ImageViewUtils;
 import com.support.utils.LogUtils;
 import com.xutils.bitmap.BitmapDisplayConfig;
@@ -199,8 +199,8 @@ public class BitmapCache {
         } catch (Throwable e) {
             LogUtils.e(e.getMessage(), e);
         } finally {
-            CloseableUtils.close(outputStream);
-            CloseableUtils.close(snapshot);
+            CloseUtils.close(outputStream);
+            CloseUtils.close(snapshot);
         }
 
         return null;
@@ -286,7 +286,7 @@ public class BitmapCache {
             } catch (Throwable e) {
                 LogUtils.e(e.getMessage(), e);
             } finally {
-                CloseableUtils.close(snapshot);
+                CloseUtils.close(snapshot);
             }
         }
         return null;

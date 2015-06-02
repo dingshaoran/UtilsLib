@@ -460,7 +460,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 		return null;
@@ -490,7 +490,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 		return null;
@@ -526,7 +526,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 		return result;
@@ -546,7 +546,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 		return null;
@@ -565,7 +565,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 		return null;
@@ -583,7 +583,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 		return dbModelList;
@@ -604,7 +604,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 		return dbModelList;
@@ -768,7 +768,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 		return id;
@@ -809,7 +809,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 
@@ -833,7 +833,7 @@ public class DbUtils {
 			} catch (Exception e) {
 				LogUtils.e(e);
 			} finally {
-				CloseableUtils.close(cursor);
+				CloseUtils.close(cursor);
 			}
 		}
 	}

@@ -15,7 +15,7 @@
 
 package com.xutils.http;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.support.utils.HttpUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.protocol.HTTP;
@@ -116,7 +116,7 @@ public class ResponseStream extends InputStream {
             }
             return _directResult;
         } finally {
-            CloseableUtils.close(baseStream);
+            CloseUtils.close(baseStream);
         }
     }
 
@@ -134,8 +134,8 @@ public class ResponseStream extends InputStream {
             }
             out.flush();
         } finally {
-            CloseableUtils.close(out);
-            CloseableUtils.close(baseStream);
+            CloseUtils.close(out);
+            CloseUtils.close(baseStream);
         }
     }
 

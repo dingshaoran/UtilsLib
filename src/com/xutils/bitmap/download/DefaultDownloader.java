@@ -15,7 +15,7 @@
 
 package com.xutils.bitmap.download;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.support.utils.ImageViewUtils;
 import com.support.utils.LogUtils;
 import com.xutils.http.client.util.OtherUtils;
@@ -85,7 +85,7 @@ public class DefaultDownloader extends Downloader {
             result = -1;
             LogUtils.e(e.getMessage(), e);
         } finally {
-            CloseableUtils.close(bis);
+            CloseUtils.close(bis);
         }
         return result;
     }

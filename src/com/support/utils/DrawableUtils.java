@@ -1,5 +1,6 @@
 package com.support.utils;
 
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -45,6 +46,7 @@ public class DrawableUtils {
 	}
 
 	/** 获取图片的大小 */
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
 	public static int getDrawableSize(Drawable drawable) {
 		if (drawable == null) {
 			return 0;

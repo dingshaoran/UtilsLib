@@ -15,7 +15,7 @@
 
 package com.xutils.http.client.entity;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.xutils.http.callback.RequestCallBackHandler;
 import org.apache.http.entity.AbstractHttpEntity;
 
@@ -102,7 +102,7 @@ public class InputStreamUploadEntity extends AbstractHttpEntity implements Uploa
                 callBackHandler.updateProgress(length, uploadedSize, true);
             }
         } finally {
-            CloseableUtils.close(inStream);
+            CloseUtils.close(inStream);
         }
     }
 

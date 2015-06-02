@@ -2,6 +2,7 @@ package com.swipebacklayout.lib;
 
 import java.lang.reflect.Method;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.os.Build;
@@ -9,6 +10,7 @@ import android.os.Build;
 /**
  * Created by Chaojun Wang on 6/9/14.
  */
+@SuppressLint("NewApi")
 public class Utils {
 	private Utils() {
 	}

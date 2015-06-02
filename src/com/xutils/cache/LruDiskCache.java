@@ -15,7 +15,7 @@
 
 package com.xutils.cache;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.support.utils.LogUtils;
 import org.apache.http.protocol.HTTP;
 
@@ -263,7 +263,7 @@ public final class LruDiskCache implements Closeable {
             }
             redundantOpCount = lineCount - lruEntries.size();
         } finally {
-            CloseableUtils.close(reader);
+            CloseUtils.close(reader);
         }
     }
 
@@ -358,7 +358,7 @@ public final class LruDiskCache implements Closeable {
      */
     private synchronized void rebuildJournal() throws IOException {
         if (journalWriter != null) {
-            CloseableUtils.close(journalWriter);
+            CloseUtils.close(journalWriter);
         }
 
         Writer writer = null;
@@ -383,7 +383,7 @@ public final class LruDiskCache implements Closeable {
                 }
             }
         } finally {
-            CloseableUtils.close(writer);
+            CloseUtils.close(writer);
         }
 
         if (journalFile.exists()) {
@@ -488,7 +488,7 @@ public final class LruDiskCache implements Closeable {
             // A file must have been deleted manually!
             for (int i = 0; i < valueCount; i++) {
                 if (ins[i] != null) {
-                    CloseableUtils.close(ins[i]);
+                    CloseUtils.close(ins[i]);
                 } else {
                     break;
                 }
@@ -726,7 +726,7 @@ public final class LruDiskCache implements Closeable {
      * the cache.
      */
     public void delete() throws IOException {
-        CloseableUtils.close(this);
+        CloseUtils.close(this);
         deleteContents(directory);
     }
 
@@ -783,7 +783,7 @@ public final class LruDiskCache implements Closeable {
         @Override
         public void close() {
             for (InputStream in : ins) {
-                CloseableUtils.close(in);
+                CloseUtils.close(in);
             }
         }
     }
@@ -884,7 +884,7 @@ public final class LruDiskCache implements Closeable {
                 writer = new OutputStreamWriter(newOutputStream(index), HTTP.UTF_8);
                 writer.write(value);
             } finally {
-                CloseableUtils.close(writer);
+                CloseUtils.close(writer);
             }
         }
 
@@ -1043,8 +1043,8 @@ public final class LruDiskCache implements Closeable {
             }
             return writer.toString();
         } finally {
-            CloseableUtils.close(reader);
-            CloseableUtils.close(writer);
+            CloseUtils.close(reader);
+            CloseUtils.close(writer);
         }
     }
 

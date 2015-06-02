@@ -24,7 +24,7 @@ import java.io.OutputStream;
 
 import org.apache.http.entity.FileEntity;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.xutils.http.callback.RequestCallBackHandler;
 
 /**
@@ -65,7 +65,7 @@ public class FileUploadEntity extends FileEntity implements UploadEntity {
 				callBackHandler.updateProgress(fileSize, uploadedSize, true);
 			}
 		} finally {
-			CloseableUtils.close(inStream);
+			CloseUtils.close(inStream);
 		}
 	}
 

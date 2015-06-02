@@ -73,7 +73,8 @@ import org.jivesoftware.smackx.provider.XHTMLExtensionProvider;
 import org.jivesoftware.smackx.search.UserSearch;
 import org.jivesoftware.smackx.search.UserSearchManager;
 
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 /**
@@ -155,8 +156,10 @@ public class AsmackHelper {
 	/**
 	 * 登录
 	 * 
-	 * @param account 登录帐号
-	 * @param password 登录密码
+	 * @param account
+	 *            登录帐号
+	 * @param password
+	 *            登录密码
 	 * @return
 	 */
 	public boolean login(String account, String password) {
@@ -181,8 +184,10 @@ public class AsmackHelper {
 	/**
 	 * 注册
 	 * 
-	 * @param account 注册帐号
-	 * @param password 注册密码
+	 * @param account
+	 *            注册帐号
+	 * @param password
+	 *            注册密码
 	 * @return 1、注册成功 0、服务器没有返回结果2、这个账号已经存在3、注册失败
 	 */
 	public String regist(String account, String password) {
@@ -301,7 +306,8 @@ public class AsmackHelper {
 	 * 获取某个组里面的所有好友
 	 * 
 	 * @param roster
-	 * @param groupName 组名
+	 * @param groupName
+	 *            组名
 	 * @return
 	 */
 	public List<RosterEntry> getEntriesByGroup(String groupName) {
@@ -361,7 +367,7 @@ public class AsmackHelper {
 	 * @param user
 	 * @return
 	 */
-	public Drawable getUserImage(String user) {
+	public Bitmap getUserImage(String user) {
 		if (getConnection() == null)
 			return null;
 		ByteArrayInputStream bais = null;
@@ -382,8 +388,7 @@ public class AsmackHelper {
 			return null;
 		}
 		// --------事例缺少的方法，暂时注释
-		// return FormatTools.getInstance().InputStream2Drawable(bais);
-		return null;
+		return BitmapFactory.decodeStream(bais);
 	}
 
 	/**
@@ -557,7 +562,7 @@ public class AsmackHelper {
 			vcard.setEncodedImage(encodedImage);
 			vcard.setField("PHOTO", "<TYPE>image/jpg</TYPE><BINVAL>" + encodedImage + "</BINVAL>", true);
 
-			ByteArrayInputStream bais = new ByteArrayInputStream(vcard.getAvatar());
+			//	ByteArrayInputStream bais = new ByteArrayInputStream(vcard.getAvatar());
 			// --------事例缺少的方法，暂时注释
 			// FormatTools.getInstance().InputStream2Bitmap(bais);
 
@@ -651,7 +656,8 @@ public class AsmackHelper {
 	/**
 	 * 创建房间
 	 * 
-	 * @param roomName 房间名称
+	 * @param roomName
+	 *            房间名称
 	 */
 	public MultiUserChat createRoom(String user, String roomName, String password) {
 		if (getConnection() == null)
@@ -713,9 +719,12 @@ public class AsmackHelper {
 	/**
 	 * 加入会议室
 	 * 
-	 * @param user 昵称
-	 * @param password 会议室密码
-	 * @param roomsName 会议室名
+	 * @param user
+	 *            昵称
+	 * @param password
+	 *            会议室密码
+	 * @param roomsName
+	 *            会议室名
 	 */
 	public MultiUserChat joinMultiUserChat(String user, String roomsName, String password) {
 		if (getConnection() == null)

@@ -17,7 +17,7 @@ package com.xutils.http.callback;
 
 import android.text.TextUtils;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 
 import org.apache.http.HttpEntity;
 
@@ -78,8 +78,8 @@ public class FileDownloadHandler {
                 callBackHandler.updateProgress(total, current, true);
             }
         } finally {
-            CloseableUtils.close(bis);
-            CloseableUtils.close(bos);
+            CloseUtils.close(bis);
+            CloseUtils.close(bos);
         }
 
         if (targetFile.exists() && !TextUtils.isEmpty(responseFileName)) {

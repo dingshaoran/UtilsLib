@@ -23,7 +23,7 @@ import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.io.OutputStream;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.xutils.http.client.multipart.MIME;
 
 /**
@@ -91,7 +91,7 @@ public class FileBody extends AbstractContentBody {
 			}
 			out.flush();
 		} finally {
-			CloseableUtils.close(in);
+			CloseUtils.close(in);
 		}
 	}
 

@@ -221,8 +221,8 @@ public class FileUtils {
 			LogUtils.e(e);
 			return false;
 		} finally {
-			CloseableUtils.close(out);
-			CloseableUtils.close(in);
+			CloseUtils.close(out);
+			CloseUtils.close(in);
 		}
 		return true;
 	}
@@ -285,8 +285,8 @@ public class FileUtils {
 		} catch (Exception e) {
 			LogUtils.e(e);
 		} finally {
-			CloseableUtils.close(fos);
-			CloseableUtils.close(is);
+			CloseUtils.close(fos);
+			CloseUtils.close(is);
 		}
 		return res;
 	}
@@ -324,7 +324,7 @@ public class FileUtils {
 		} catch (Exception e) {
 			LogUtils.e(e);
 		} finally {
-			CloseableUtils.close(raf);
+			CloseUtils.close(raf);
 		}
 		return res;
 	}
@@ -367,8 +367,8 @@ public class FileUtils {
 		} catch (Exception e) {
 			LogUtils.e(e);
 		} finally {
-			CloseableUtils.close(fis);
-			CloseableUtils.close(fos);
+			CloseUtils.close(fis);
+			CloseUtils.close(fos);
 		}
 	}
 
@@ -392,7 +392,7 @@ public class FileUtils {
 		} catch (Exception e) {
 			LogUtils.e(e);
 		} finally {
-			CloseableUtils.close(fis);
+			CloseUtils.close(fis);
 		}
 		return map;
 	}

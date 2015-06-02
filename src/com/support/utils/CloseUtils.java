@@ -24,9 +24,9 @@ import java.io.Closeable;
  * Date: 13-8-26
  * Time: 下午6:02
  */
-public class CloseableUtils {
+public class CloseUtils {
 
-    private CloseableUtils() {
+    private CloseUtils() {
     }
 
     public static void close(Closeable closeable) {

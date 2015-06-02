@@ -23,7 +23,7 @@ import java.io.OutputStream;
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.HttpEntityWrapper;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.xutils.http.callback.RequestCallBackHandler;
 
 /**
@@ -60,7 +60,7 @@ abstract class DecompressingEntity extends HttpEntityWrapper implements UploadEn
 			in = wrappedEntity.getContent();
 			return decorate(in);
 		} catch (IOException ex) {
-			CloseableUtils.close(in);
+			CloseUtils.close(in);
 			throw ex;
 		}
 	}
@@ -119,7 +119,7 @@ abstract class DecompressingEntity extends HttpEntityWrapper implements UploadEn
 				callBackHandler.updateProgress(uncompressedLength, uploadedSize, true);
 			}
 		} finally {
-			CloseableUtils.close(inStream);
+			CloseUtils.close(inStream);
 		}
 	}
 

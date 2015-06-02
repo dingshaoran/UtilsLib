@@ -15,7 +15,7 @@
 
 package com.xutils.http.callback;
 
-import com.support.utils.CloseableUtils;
+import com.support.utils.CloseUtils;
 import com.xutils.http.client.util.OtherUtils;
 
 import org.apache.http.HttpEntity;
@@ -56,7 +56,7 @@ public class StringDownloadHandler {
                 callBackHandler.updateProgress(total, current, true);
             }
         } finally {
-            CloseableUtils.close(inputStream);
+            CloseUtils.close(inputStream);
         }
         return sb.toString().trim();
     }

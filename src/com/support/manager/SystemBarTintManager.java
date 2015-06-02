@@ -42,6 +42,7 @@ import android.widget.FrameLayout.LayoutParams;
  * translucent system UI modes.
  *
  */
+@SuppressLint("RtlHardcoded")
 public class SystemBarTintManager {
 
 	static {
@@ -50,7 +51,9 @@ public class SystemBarTintManager {
 		// See https://github.com/android/platform_frameworks_base/blob/master/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java#L1076
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			try {
+				@SuppressWarnings("rawtypes")
 				Class c = Class.forName("android.os.SystemProperties");
+				@SuppressWarnings("unchecked")
 				Method m = c.getDeclaredMethod("get", String.class);
 				m.setAccessible(true);
 				sNavBarOverride = (String) m.invoke(null, "qemu.hw.mainkeys");
@@ -134,7 +137,8 @@ public class SystemBarTintManager {
 	 * UI modes have not been enabled in either the theme or via window flags,
 	 * then this method does nothing.
 	 *
-	 * @param enabled True to enable tinting, false to disable it (default).
+	 * @param enabled
+	 *            True to enable tinting, false to disable it (default).
 	 */
 	public void setStatusBarTintEnabled(boolean enabled) {
 		mStatusBarTintEnabled = enabled;
@@ -150,7 +154,8 @@ public class SystemBarTintManager {
 	 * or earlier, or translucent system UI modes have not been enabled in
 	 * either the theme or via window flags, then this method does nothing.
 	 *
-	 * @param enabled True to enable tinting, false to disable it (default).
+	 * @param enabled
+	 *            True to enable tinting, false to disable it (default).
 	 */
 	public void setNavigationBarTintEnabled(boolean enabled) {
 		mNavBarTintEnabled = enabled;
@@ -162,7 +167,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified color tint to all system UI bars.
 	 *
-	 * @param color The color of the background tint.
+	 * @param color
+	 *            The color of the background tint.
 	 */
 	public void setTintColor(int color) {
 		setStatusBarTintColor(color);
@@ -172,7 +178,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified drawable or color resource to all system UI bars.
 	 *
-	 * @param res The identifier of the resource.
+	 * @param res
+	 *            The identifier of the resource.
 	 */
 	public void setTintResource(int res) {
 		setStatusBarTintResource(res);
@@ -182,8 +189,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified drawable to all system UI bars.
 	 *
-	 * @param drawable The drawable to use as the background, or null to remove
-	 *            it.
+	 * @param drawable
+	 *            The drawable to use as the background, or null to remove it.
 	 */
 	public void setTintDrawable(Drawable drawable) {
 		setStatusBarTintDrawable(drawable);
@@ -193,7 +200,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified alpha to all system UI bars.
 	 *
-	 * @param alpha The alpha to use
+	 * @param alpha
+	 *            The alpha to use
 	 */
 	public void setTintAlpha(float alpha) {
 		setStatusBarAlpha(alpha);
@@ -203,7 +211,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified color tint to the system status bar.
 	 *
-	 * @param color The color of the background tint.
+	 * @param color
+	 *            The color of the background tint.
 	 */
 	public void setStatusBarTintColor(int color) {
 		if (mStatusBarAvailable) {
@@ -214,7 +223,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified drawable or color resource to the system status bar.
 	 *
-	 * @param res The identifier of the resource.
+	 * @param res
+	 *            The identifier of the resource.
 	 */
 	public void setStatusBarTintResource(int res) {
 		if (mStatusBarAvailable) {
@@ -225,8 +235,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified drawable to the system status bar.
 	 *
-	 * @param drawable The drawable to use as the background, or null to remove
-	 *            it.
+	 * @param drawable
+	 *            The drawable to use as the background, or null to remove it.
 	 */
 	@SuppressWarnings("deprecation")
 	public void setStatusBarTintDrawable(Drawable drawable) {
@@ -238,7 +248,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified alpha to the system status bar.
 	 *
-	 * @param alpha The alpha to use
+	 * @param alpha
+	 *            The alpha to use
 	 */
 	@TargetApi(11)
 	public void setStatusBarAlpha(float alpha) {
@@ -250,7 +261,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified color tint to the system navigation bar.
 	 *
-	 * @param color The color of the background tint.
+	 * @param color
+	 *            The color of the background tint.
 	 */
 	public void setNavigationBarTintColor(int color) {
 		if (mNavBarAvailable) {
@@ -262,7 +274,8 @@ public class SystemBarTintManager {
 	 * Apply the specified drawable or color resource to the system navigation
 	 * bar.
 	 *
-	 * @param res The identifier of the resource.
+	 * @param res
+	 *            The identifier of the resource.
 	 */
 	public void setNavigationBarTintResource(int res) {
 		if (mNavBarAvailable) {
@@ -273,8 +286,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified drawable to the system navigation bar.
 	 *
-	 * @param drawable The drawable to use as the background, or null to remove
-	 *            it.
+	 * @param drawable
+	 *            The drawable to use as the background, or null to remove it.
 	 */
 	@SuppressWarnings("deprecation")
 	public void setNavigationBarTintDrawable(Drawable drawable) {
@@ -286,7 +299,8 @@ public class SystemBarTintManager {
 	/**
 	 * Apply the specified alpha to the system navigation bar.
 	 *
-	 * @param alpha The alpha to use
+	 * @param alpha
+	 *            The alpha to use
 	 */
 	@TargetApi(11)
 	public void setNavigationBarAlpha(float alpha) {
@@ -536,8 +550,9 @@ public class SystemBarTintManager {
 		 * Get the layout inset for any system UI that appears at the top of the
 		 * screen.
 		 *
-		 * @param withActionBar True to include the height of the action bar,
-		 *            False otherwise.
+		 * @param withActionBar
+		 *            True to include the height of the action bar, False
+		 *            otherwise.
 		 * @return The layout inset (in pixels).
 		 */
 		public int getPixelInsetTop(boolean withActionBar) {
