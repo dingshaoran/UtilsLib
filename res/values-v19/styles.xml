@@ -1,5 +1,0 @@
-<resources>
-
-    <style name="NoActionBar" parent="android:Theme.Holo.Light.NoActionBar.TranslucentDecor"></style>
-
-</resources>

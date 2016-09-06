@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="actionbar_color">#FF0099CC</color>
-    <color name="statusbar_color">#FF006080</color>
-    <color name="category_tab_highlight_bg">#ffd43d3d</color>
-    <color name="category_tab_text">#ff707070</color>
-    <color name="category_tab_highlight_text">#fffafafa</color>
-</resources>
