@@ -4,68 +4,53 @@ import android.util.Log;
 
 public class LogUtils {
 	public static boolean debug = true;
-	private static String mTag = "com.lib.utils";
 
 	/** 以级别为 d 的形式输出LOG */
-	public static void v(String msg) {
+	public static void v(String tag, String msg) {
 		if (debug) {
-			Log.v(mTag, msg);
+			Log.v(tag, msg);
 		}
 	}
 
 	/** 以级别为 d 的形式输出LOG */
-	public static void d(String msg) {
+	public static void d(String tag, String msg) {
 		if (debug) {
-			Log.d(mTag, msg);
+			Log.d(tag, msg);
 		}
 	}
 
 	/** 以级别为 i 的形式输出LOG */
-	public static void i(String msg) {
+	public static void i(String tag, String msg) {
 		if (debug) {
-			Log.i(mTag, msg);
+			Log.i(tag, msg);
 		}
 	}
 
 	/** 以级别为 w 的形式输出LOG */
-	public static void w(String msg) {
+	public static void w(String tag, String msg) {
 		if (debug) {
-			Log.w(mTag, msg);
+			Log.w(tag, msg);
 		}
 	}
 
 	/** 以级别为 w 的形式输出Throwable */
-	public static void w(Throwable tr) {
+	public static void w(String tag, Throwable tr) {
 		if (debug) {
-			Log.w(mTag, "", tr);
-		}
-	}
-
-	/** 以级别为 w 的形式输出LOG信息和Throwable */
-	public static void w(String msg, Throwable tr) {
-		if (debug) {
-			Log.w(mTag, msg, tr);
+			Log.w(tag, "", tr);
 		}
 	}
 
 	/** 以级别为 e 的形式输出LOG */
-	public static void e(String msg) {
+	public static void e(String tag, String msg) {
 		if (debug) {
-			Log.e(mTag, msg);
+			Log.e(tag, msg);
 		}
 	}
 
 	/** 以级别为 e 的形式输出Throwable */
-	public static void e(Throwable tr) {
+	public static void e(String tag, Throwable tr) {
 		if (debug) {
-			Log.e(mTag, "", tr);
-		}
-	}
-
-	/** 以级别为 e 的形式输出LOG信息和Throwable */
-	public static void e(String msg, Throwable tr) {
-		if (debug) {
-			Log.e(mTag, msg, tr);
+			Log.e(tag, "", tr);
 		}
 	}
 }

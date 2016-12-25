@@ -151,7 +151,7 @@ public class FileUtils {
 				srcFile.delete();
 			}
 		} catch (Exception e) {
-			LogUtils.e(e);
+			LogUtils.e("FileUtils", e);
 			return false;
 		} finally {
 			CloseUtils.close(out);
@@ -169,7 +169,7 @@ public class FileUtils {
 			File f = new File(path);
 			return f.exists() && f.canWrite();
 		} catch (Exception e) {
-			LogUtils.e(e);
+			LogUtils.e("FileUtils", e);
 			return false;
 		}
 	}
@@ -181,7 +181,7 @@ public class FileUtils {
 			Runtime runtime = Runtime.getRuntime();
 			runtime.exec(command);
 		} catch (Exception e) {
-			LogUtils.e(e);
+			LogUtils.e("FileUtils", e);
 		}
 	}
 
@@ -216,7 +216,7 @@ public class FileUtils {
 				res = true;
 			}
 		} catch (Exception e) {
-			LogUtils.e(e);
+			LogUtils.e("FileUtils", e);
 		} finally {
 			CloseUtils.close(fos);
 			CloseUtils.close(is);
@@ -255,7 +255,7 @@ public class FileUtils {
 				return length;
 			}
 		} catch (Exception e) {
-			LogUtils.e(e);
+			LogUtils.e("FileUtils", e);
 		} finally {
 			CloseUtils.close(raf);
 		}
@@ -307,7 +307,7 @@ public class FileUtils {
 			fos = new FileOutputStream(f);
 			p.store(fos, comment);
 		} catch (Exception e) {
-			LogUtils.e(e);
+			LogUtils.e("FileUtils", e);
 		} finally {
 			CloseUtils.close(fis);
 			CloseUtils.close(fos);
@@ -316,10 +316,12 @@ public class FileUtils {
 
 	/**
 	 * 把指定位置的图片复制到系统相机拍照的图库中
-	 *
-	 * @param context  context
-	 * @param pathName 图片位置
-	 *
+	 * 
+	 * @param context
+	 *            context
+	 * @param pathName
+	 *            图片位置
+	 * 
 	 * @return
 	 */
 	public static Uri copyImage2Gallery(Context context, String pathName) {
@@ -370,7 +372,7 @@ public class FileUtils {
 			p.load(fis);
 			value = p.getProperty(key, defaultValue);
 		} catch (IOException e) {
-			LogUtils.e(e);
+			LogUtils.e("FileUtils", e);
 		} finally {
 			CloseUtils.close(fis);
 		}
@@ -398,7 +400,7 @@ public class FileUtils {
 			fos = new FileOutputStream(f);
 			p.store(fos, comment);
 		} catch (Exception e) {
-			LogUtils.e(e);
+			LogUtils.e("FileUtils", e);
 		} finally {
 			CloseUtils.close(fis);
 			CloseUtils.close(fos);
@@ -423,7 +425,7 @@ public class FileUtils {
 			p.load(fis);
 			map = new HashMap<String, String>((Map) p);// 因为properties继承了map，所以直接通过p来构造一个map
 		} catch (Exception e) {
-			LogUtils.e(e);
+			LogUtils.e("FileUtils", e);
 		} finally {
 			CloseUtils.close(fis);
 		}
@@ -476,7 +478,7 @@ public class FileUtils {
 		boolean res = false;
 		new File(path).mkdirs();
 		File f = new File(path, name);
-		LogUtils.i(path + name);
+		LogUtils.i("FileUtils", path + name);
 		RandomAccessFile raf = null;
 		try {
 			if (f.exists()) {
@@ -494,7 +496,7 @@ public class FileUtils {
 				res = true;
 			}
 		} catch (Exception e) {
-			LogUtils.e(e.getMessage());
+			LogUtils.e("FileUtils", e);
 		} finally {
 			CloseUtils.close(raf);
 		}

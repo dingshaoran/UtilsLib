@@ -9,8 +9,8 @@ public class CloseUtils {
 		if (io != null) {
 			try {
 				io.close();
-			} catch (Throwable e) {//还有其他异常IncompatibleClassChangeError 2.0
-				LogUtils.e(e);
+			} catch (Throwable e) {// 还有其他异常IncompatibleClassChangeError 2.0
+				LogUtils.e("CloseUtils", e);
 			}
 		}
 		return true;
@@ -21,8 +21,8 @@ public class CloseUtils {
 		if (io != null) {
 			try {
 				io.close();
-			} catch (Throwable e) {//还有其他异常IncompatibleClassChangeError 2.0
-				LogUtils.e(e);
+			} catch (Throwable e) {// 还有其他异常IncompatibleClassChangeError 2.0
+				LogUtils.e("CloseUtils", e);
 			}
 		}
 		return true;
