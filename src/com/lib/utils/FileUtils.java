@@ -740,7 +740,6 @@ public class FileUtils {
      *
      * @param oldPath String 源文件夹路径 如：E:/phsftp/src
      * @param newPath String 目标文件夹路径 如：E:/phsftp/dest
-     * @return boolean
      */
     public static void copyFolder(String oldPath, String newPath) {
         // 如果文件夹不存在 则新建文件夹
@@ -790,7 +789,6 @@ public class FileUtils {
      * @param inSream
      * @param charsetName
      * @return
-     * @throws Exception
      */
     public static String readData(InputStream inSream, String charsetName)
             throws IOException {
@@ -811,7 +809,7 @@ public class FileUtils {
      *
      * @param path
      * @return
-     * @throws Exception
+     * @throws IOException
      */
     public static Set<String> readFileLine(String path) throws IOException {
         Set<String> datas = new HashSet<String>();

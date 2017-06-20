@@ -1,7 +1,5 @@
 package com.lib.utils;
 
-import java.io.ByteArrayOutputStream;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -10,9 +8,11 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 
+import java.io.ByteArrayOutputStream;
+
 /**
- * Description: 图片工具类 <br/>
- * Program Name: 优信拍商家 <br/>
+ * Description: 图片工具类
+ * Program Name: 优信拍商家
  * Date: 2015年1月26日11:56:22
  * 
  * @author 黄炜 huangwei@youxinpai.com
@@ -22,8 +22,7 @@ public class ImageUtils {
 	/**
 	 * 
 	 * @param data 存有图片数据的byte[]
-	 * @param size 需要裁剪到的大小
-	 * @param mode 如果裁剪后的比例与原始比例不一致，压缩到需要尺寸的大小后的裁剪起始位置<br/>
+	 * @param mode 如果裁剪后的比例与原始比例不一致，压缩到需要尺寸的大小后的裁剪起始位置
 	 * 				-2CenterCrop，-1FitXY, else 起始位置
 	 * @return
 	 */
@@ -109,9 +108,7 @@ public class ImageUtils {
 	 * 压缩bitmap的质量以kb为单位（按照指定的压缩大小来处理）如果不传，默认为100kb（耗时）
 	 * 
 	 * @param bitmap
-	 * @param compressSize
 	 * @return
-	 * @method
 	 */
 	public static byte[] getSmallBitmap(Bitmap bitmap, int size_kb) {
 		if (bitmap == null) {
